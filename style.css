@@ -47,17 +47,29 @@ footer {
   color: white;
 }
 
-ul {
+
+a {
+  color: white;
+}
+
+section {
+  font-family: sans-serif;
+  color: white;
+  background-color: #B20000;
+  font-size: 200%
+  margin: 10px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+
+#location-list {
   font-family: sans-serif;
   font-size: 2em;
   color: white;
   background-color: #B20000;
   list-style-type: none;
   line-height: 150%:
-}
-
-a {
-  color: white;
 }
 
 #logo, #sub-logo {
