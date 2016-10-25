@@ -60,6 +60,18 @@ function listAllSales() {
   var totalSales = document.createElement('th');
   totalSales.innerText = 'Total';
   headerRow.appendChild(totalSales);
+  var footerRow = document.createElement('tr');
+  newTable.appendChild(footerRow);
+  var totalRow = document.createElement('td');
+  totalRow.innerText = 'Total';
+  footerRow.appendChild(totalRow);
+  for (var k = 0; k < hours.length; k++) {
+    var l = 0;
+    var sum = document.createElement('td');
+    sum.innerText = locationArray[l].hourlySales[k];
+    footerRow.appendChild(sum);
+    l++;
+  }
 }
 
 new Location('1st and Pike', 23, 65, 6.3);
