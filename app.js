@@ -10,7 +10,7 @@ var firstAndPike = {
   hourlySales: [],
   totalCookies: 0,
   cookiesPerHr: function() {
-    for (var i = 0; i <= 14; i++) {
+    for (var i = 0; i < hours.length; i++) {
       var randomNum = Math.round((Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust) * this.avgCookies);
       this.hourlySales.push(randomNum);
     }
@@ -28,7 +28,7 @@ var seaTac = {
   hourlySales: [],
   totalCookies: 0,
   cookiesPerHr: function() {
-    for (var i = 0; i <= 14; i++) {
+    for (var i = 0; i < hours.length; i++) {
       var randomNum = Math.round((Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust) * this.avgCookies);
       this.hourlySales.push(randomNum);
     }
@@ -46,7 +46,7 @@ var seattleCenter = {
   hourlySales: [],
   totalCookies: 0,
   cookiesPerHr: function() {
-    for (var i = 0; i <= 14; i++) {
+    for (var i = 0; i < hours.length; i++) {
       var randomNum = Math.round((Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust) * this.avgCookies);
       this.hourlySales.push(randomNum);
     }
@@ -64,7 +64,7 @@ var capitolHill = {
   hourlySales: [],
   totalCookies: 0,
   cookiesPerHr: function() {
-    for (var i = 0; i <= 14; i++) {
+    for (var i = 0; i < hours.length; i++) {
       var randomNum = Math.round((Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust) * this.avgCookies);
       this.hourlySales.push(randomNum);
     }
@@ -82,7 +82,7 @@ var alki = {
   hourlySales: [],
   totalCookies: 0,
   cookiesPerHr: function() {
-    for (var i = 0; i <= 14; i++) {
+    for (var i = 0; i < hours.length; i++) {
       var randomNum = Math.round((Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust) * this.avgCookies);
       this.hourlySales.push(randomNum);
     }
