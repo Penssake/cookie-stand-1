@@ -38,15 +38,18 @@ function Location(location, minCust, maxCust, avgCookies) {
 
 var locationArray = [];
 
-function listAllSales() {
+function createTableAndTitle() {
   var section = document.getElementById('content');
   var tableTitle = document.createElement('p');
   tableTitle.innerText = 'Cookies Needed By Location Each Day';
   section.appendChild(tableTitle);
   var newTable = document.createElement('table');
   section.appendChild(newTable);
+}
+
+function createHeaderRow() {
   var headerRow = document.createElement('tr');
-  newTable.appendChild(headerRow);
+  document.getElementsByTagName('table')[0].appendChild(headerRow);
   var blankSpace = document.createElement('th');
   headerRow.appendChild(blankSpace);
   for (var i = 0; i < hours.length; i ++) {
@@ -54,16 +57,22 @@ function listAllSales() {
     th.innerText = hours[i];
     headerRow.appendChild(th);
   }
-  for (var j = 0; j < locationArray.length; j++){
-    locationArray[j].renderSales();
-  }
   var totalSales = document.createElement('th');
   totalSales.innerText = 'Total';
   headerRow.appendChild(totalSales);
+}
+
+function renderSalesData() {
+  for (var j = 0; j < locationArray.length; j++){
+    locationArray[j].renderSales();
+  }
+}
+
+function createFooterRow() {
   var footerRow = document.createElement('tr');
-  newTable.appendChild(footerRow);
+  document.getElementsByTagName('table')[0].appendChild(footerRow);
   var totalRow = document.createElement('td');
-  totalRow.innerText = 'Total';
+  totalRow.innerText = 'Totals';
   footerRow.appendChild(totalRow);
   for (var k = 0; k < hours.length; k++) {
     var l = 0;
@@ -71,6 +80,29 @@ function listAllSales() {
     sum.innerText = locationArray[l].hourlySales[k];
     footerRow.appendChild(sum);
     l++;
+  }
+  var grandTotal = document.createElement('td');
+  var sumOfSums = 0;
+  for (var m = 0; m < locationArray.length; m++) {
+    sumOfSums += locationArray[m].totalCookies;
+  }
+  grandTotal.innerHTML = sumOfSums;
+  footerRow.appendChild(grandTotal);
+}
+
+function listAllSales() {
+  createTableAndTitle();
+  createHeaderRow();
+  renderSalesData();
+  createFooterRow();
+}
+
+function staffingRequirements() {
+  var locationIndex = 0;
+  for (var i = 0; i < locationArray[locationIndex].hourlySales.length; i++) {
+    var staff = locationArray[locationIndex].hourlySales[i] / 20;
+    locationIndex++;
+    console.log(staff);
   }
 }
 
@@ -81,3 +113,5 @@ new Location('Capitol Hill', 20, 38, 2.3);
 new Location('Alki', 2, 16, 4.6);
 
 listAllSales();
+
+staffingRequirements();
