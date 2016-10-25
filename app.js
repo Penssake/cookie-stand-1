@@ -8,6 +8,7 @@ function Location(location, minCust, maxCust, avgCookies) {
   this.maxCust = maxCust;
   this.avgCookies = avgCookies;
   this.hourlySales = [];
+  this.staffingNeeds = [];
   this.totalCookies = 0;
   this.randomCookieGen = function() {
     for (var i = 0; i < hours.length; i++) {
@@ -32,6 +33,15 @@ function Location(location, minCust, maxCust, avgCookies) {
     var tally = document.createElement('td');
     tally.innerText = this.totalCookies;
     newRow.appendChild(tally);
+  };
+  this.calcStaffing = function() {
+    for (var i = 0; i < this.hourlySales.length; i++) {
+      var staffNumber = Math.round(this.hourlySales[i] / 20);
+      if (staffNumber < 2) {
+        staffNumber = 2;
+      }
+      this.staffingNeeds.push(staffNumber);
+    }
   };
   locationArray.push(this);
 };
@@ -97,15 +107,6 @@ function listAllSales() {
   createFooterRow();
 }
 
-function staffingRequirements() {
-  var locationIndex = 0;
-  for (var i = 0; i < locationArray[locationIndex].hourlySales.length; i++) {
-    var staff = locationArray[locationIndex].hourlySales[i] / 20;
-    locationIndex++;
-    console.log(staff);
-  }
-}
-
 new Location('1st and Pike', 23, 65, 6.3);
 new Location('SeaTac Airport', 3, 24, 1.2);
 new Location('Seattle Center', 11, 38, 3.7);
@@ -113,5 +114,3 @@ new Location('Capitol Hill', 20, 38, 2.3);
 new Location('Alki', 2, 16, 4.6);
 
 listAllSales();
-
-staffingRequirements();
