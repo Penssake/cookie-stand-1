@@ -243,6 +243,10 @@ function harvest(event){
   new Location(newLocation, newMinCust, newMaxCust, newAvgCookie);
   console.log(newLocation);
   locationArray[locationArray.length - 1].renderSales();
+  document.getElementById('new-location').value = '';
+  document.getElementById('new-min-cust').value = '';
+  document.getElementById('new-max-cust').value = '';
+  document.getElementById('new-avg-cookies').value = '';
 }
 
 document.getElementById('submit-button').addEventListener('click', harvest);

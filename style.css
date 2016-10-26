@@ -52,6 +52,47 @@ a {
   color: white;
 }
 
+form {
+    width: 50%;
+    background-color: #b20000;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: sans-serif;
+    color: white;
+}
+
+#new-location, #new-min-cust, #new-max-cust, #new-avg-cookies {
+    margin: 10px;
+}
+
+#submit-button {
+  font-family: impact;
+  background-color: #fafad2;
+  border: 0;
+  text-shadow: 0px;
+  font-size: 150%;
+  border-radius: 10px;
+  padding: 10px;
+}
+fieldset {
+  border-style: none;
+  margin: 0;
+  padding: 20px;
+}
+
+legend {
+  border-radius: 10px;
+  background-color: #900000;
+  font-size: 200%;
+  padding: 15px;
+  text-transform: uppercase;
+  color: white;
+  font-family: impact;
+  border: 1px;
+}
 
 table {
   text-align: center;
