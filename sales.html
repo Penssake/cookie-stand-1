@@ -16,7 +16,7 @@
       </section>
     </header>
     <main>
-      <form id="add-store" action="." method="post">
+      <form id="add-store" action="" method="post">
         <fieldset>
           <legend>
             Add Additional Store
@@ -24,28 +24,28 @@
           <label>
             Location:
             <br />
-            <input type="text" name="newLocation">
+            <input id="new-location" type="text" name="newLocation">
           </label>
           <br />
           <label>
             Minimum Customers/hr:
             <br />
-            <input type="number" name="newMinCust" min="0">
+            <input id="new-min-cust" type="number" name="newMinCust" min="0">
           </label>
           <br />
           <label>
             Maximum Customers/hr:
             <br />
-            <input type="number" name="newMaxCust" min="0">
+            <input id="new-max-cust" type="number" name="newMaxCust" min="0">
           </label>
           <br />
           <label>
             Average Cookies per Customer:
             <br />
-            <input type="number" name="newAvgCookies" step="any" min="0">
+            <input id="new-avg-cookies"type="number" name="newAvgCookies" step="any" min="0">
           </label>
           <p>
-            <input type="submit" name="submit" value="Add new store!" />
+            <input id="submit-button"type="submit" name="submit" value="Add new store!" />
           </p>
         </fieldset>
       </form>

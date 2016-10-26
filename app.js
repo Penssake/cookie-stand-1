@@ -22,7 +22,9 @@ function Location(location, minCust, maxCust, avgCookies) {
   this.renderSales = function() {
     this.randomCookieGen();
     var newRow = document.createElement('tr');
-    document.getElementsByTagName('table')[0].appendChild(newRow);
+    var table = document.getElementsByTagName('table')[0];
+    table.insertBefore(newRow, document.getElementById('footer-row'));
+    // document.getElementsByTagName('table')[0].appendChild(newRow);
     var rowTitle = document.createElement('td');
     rowTitle.innerText = this.location;
     newRow.appendChild(rowTitle);
@@ -174,6 +176,7 @@ function renderSalesData() {
 
 function createFooterRow(tableID) {
   var footerRow = document.createElement('tr');
+  footerRow.id = 'footer-row';
   // document.getElementsByTagName('table')[0].appendChild(footerRow);
   document.getElementById(tableID).appendChild(footerRow);
   var totalRow = document.createElement('td');
@@ -231,3 +234,15 @@ new Location('Alki', 2, 16, 4.6);
 
 renderAllSales('Cookies Needed By Location Per Day', 'sales');
 // renderAllSales('Staffing Needed By Hour'); Non-functioning staffing stuff
+function harvest(event){
+  event.preventDefault();
+  var newLocation = document.getElementById('new-location').value;
+  var newMinCust = parseInt(document.getElementById('new-min-cust').value);
+  var newMaxCust = document.getElementById('new-max-cust').value;
+  var newAvgCookie = document.getElementById('new-avg-cookies').value;
+  new Location(newLocation, newMinCust, newMaxCust, newAvgCookie);
+  console.log(newLocation);
+  locationArray[locationArray.length - 1].renderSales();
+}
+
+document.getElementById('submit-button').addEventListener('click', harvest);
