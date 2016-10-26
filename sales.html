@@ -16,6 +16,39 @@
       </section>
     </header>
     <main>
+      <form id="add-store" action="." method="post">
+        <fieldset>
+          <legend>
+            Add Additional Store
+          </legend>
+          <label>
+            Location:
+            <br />
+            <input type="text" name="newLocation">
+          </label>
+          <br />
+          <label>
+            Minimum Customers/hr:
+            <br />
+            <input type="number" name="newMinCust" min="0">
+          </label>
+          <br />
+          <label>
+            Maximum Customers/hr:
+            <br />
+            <input type="number" name="newMaxCust" min="0">
+          </label>
+          <br />
+          <label>
+            Average Cookies per Customer:
+            <br />
+            <input type="number" name="newAvgCookies" step="any" min="0">
+          </label>
+          <p>
+            <input type="submit" name="submit" value="Add new store!" />
+          </p>
+        </fieldset>
+      </form>
       <section id="sales-table">
       </section>
       <script src="app.js"></script>

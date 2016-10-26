@@ -8,6 +8,7 @@ function Location(location, minCust, maxCust, avgCookies) {
   this.maxCust = maxCust;
   this.avgCookies = avgCookies;
   this.hourlySales = [];
+  // Non-functioning staffing code stuff
   // this.staffingNeeds = [];
   this.totalCookies = 0;
   this.randomCookieGen = function() {
@@ -34,6 +35,7 @@ function Location(location, minCust, maxCust, avgCookies) {
     tally.innerText = this.totalCookies;
     newRow.appendChild(tally);
   };
+  // Non-functioniing staffing code stuff.
   // this.calcStaffing = function() {
   //   for (var i = 0; i < this.hourlySales.length; i++) {
   //     var staffNumber = Math.round(this.hourlySales[i] / 20);
@@ -60,6 +62,8 @@ function Location(location, minCust, maxCust, avgCookies) {
 };
 
 var locationArray = [];
+
+// Begin old code
 //
 // function createTableAndTitle() {
 //   var section = document.getElementById('content');
@@ -119,6 +123,8 @@ var locationArray = [];
 //   renderSalesData();
 //   createFooterRow();
 // }
+//
+// End old code
 
 function createTableTitle(title) {
   var section = document.getElementById('sales-table');
@@ -159,6 +165,7 @@ function renderSalesData() {
   }
 }
 
+// Non-fucntioning staff table code
 // function renderStaffingData() {
 //   for (var i = 0; i < locationArray.length; i++) {
 //     locationArray[i].renderStaffing();
@@ -172,6 +179,7 @@ function createFooterRow(tableID) {
   var totalRow = document.createElement('td');
   totalRow.innerText = 'Totals: ';
   footerRow.appendChild(totalRow);
+  // Not sure why this doesn't work when the next block does.
   // for (var i = 0; i < locationArray.length; i++) {
   //   for (var j = 0; j < hours.length; j++) {
   //     var sum = document.createElement('td');
@@ -196,19 +204,19 @@ function createFooterRow(tableID) {
   footerRow.appendChild(grandTotal);
 }
 
-function renderAllSales(title) {
+function renderAllSales(title, tableID) {
   createTableTitle(title);
-  createTable();
-  createHeaderRow();
+  createTable(tableID);
+  createHeaderRow(tableID);
   addLocationTotals();
   renderSalesData();
-  createFooterRow();
+  createFooterRow(tableID);
 }
-//
-// function renderAllStaffing(title) {
+// Non-functioniing staffing code
+// function renderAllStaffing(title, tableID) {
 //   createTableTitle(title);
-//   createTable();
-//   createHeaderRow();
+//   createTable(tableID);
+//   createHeaderRow(tableID);
 //   renderStaffingData();
 //   createFooterRow();
 // }
@@ -219,7 +227,7 @@ new Location('Seattle Center', 11, 38, 3.7);
 new Location('Capitol Hill', 20, 38, 2.3);
 new Location('Alki', 2, 16, 4.6);
 
-// listAllSales();
+// listAllSales(); Old code
 
-renderAllSales('Cookies Needed By Location Per Day');
-// renderAllSales('Staffing Needed By Hour');
+renderAllSales('Cookies Needed By Location Per Day', 'sales');
+// renderAllSales('Staffing Needed By Hour'); Non-functioning staffing stuff
