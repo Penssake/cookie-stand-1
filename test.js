@@ -8,7 +8,7 @@ function Location(location, minCust, maxCust, avgCookies) {
   this.maxCust = maxCust;
   this.avgCookies = avgCookies;
   this.hourlySales = [];
-  // this.staffingNeeds = [];
+  this.staffingNeeds = [];
   this.totalCookies = 0;
   this.randomCookieGen = function() {
     for (var i = 0; i < hours.length; i++) {
@@ -34,15 +34,15 @@ function Location(location, minCust, maxCust, avgCookies) {
     tally.innerText = this.totalCookies;
     newRow.appendChild(tally);
   };
-  // this.calcStaffing = function() {
-  //   for (var i = 0; i < this.hourlySales.length; i++) {
-  //     var staffNumber = Math.round(this.hourlySales[i] / 20);
-  //     if (staffNumber < 2) {
-  //       staffNumber = 2;
-  //     }
-  //     this.staffingNeeds.push(staffNumber);
-  //   }
-  // };
+  this.calcStaffing = function() {
+    for (var i = 0; i < this.hourlySales.length; i++) {
+      var staffNumber = Math.round(this.hourlySales[i] / 20);
+      if (staffNumber < 2) {
+        staffNumber = 2;
+      }
+      this.staffingNeeds.push(staffNumber);
+    }
+  };
   // this.renderStaffing = function() {
   //   this.calcStaffing();
   //   var newRow = document.createElement('tr');
@@ -50,9 +50,9 @@ function Location(location, minCust, maxCust, avgCookies) {
   //   var rowTitle = document.createElement('td');
   //   rowTitle.innerText = this.location;
   //   newRow.appendChild(rowTitle);
-  //   for (var i = 0; i < this.hourlySales.length; i++) {
+  //   for (var i = 0; i < this.staffingNeeds.length; i++) {
   //     var td = document.createElement('td');
-  //     td.innerText = this.hourlySales[i];
+  //     td.innerText = this.staffingNeeds[i];
   //     newRow.appendChild(td);
   //   }
   // };
@@ -121,23 +121,21 @@ var locationArray = [];
 // }
 
 function createTableTitle(title) {
-  var section = document.getElementById('sales-table');
+  var section = document.getElementById('content');
   var tableTitle = document.createElement('p');
   tableTitle.innerText = title;
   section.appendChild(tableTitle);
 }
 
-function createTable(tableID) {
-  var section = document.getElementById('sales-table');
+function createTable() {
+  var section = document.getElementById('content');
   var newTable = document.createElement('table');
-  newTable.id = tableID;
   section.appendChild(newTable);
 }
 
-function createHeaderRow(tableID) {
+function createHeaderRow() {
   var headerRow = document.createElement('tr');
-  // document.getElementsByTagName('table')[0].appendChild(headerRow);
-  document.getElementById(tableID).appendChild(headerRow);
+  document.getElementsByTagName('table')[0].appendChild(headerRow);
   var blankSpace = document.createElement('th');
   headerRow.appendChild(blankSpace);
   for (var i = 0; i < hours.length; i++) {
@@ -159,16 +157,14 @@ function renderSalesData() {
   }
 }
 
-// function renderStaffingData() {
-//   for (var i = 0; i < locationArray.length; i++) {
-//     locationArray[i].renderStaffing();
-//   }
-// }
+function renderStaffingData() {
+  for (var i = 0; i < locationArray.length; i++) {
+    locationArray[i].renderStaffing();
+}
 
-function createFooterRow(tableID) {
+function createFooterRow() {
   var footerRow = document.createElement('tr');
-  // document.getElementsByTagName('table')[0].appendChild(footerRow);
-  document.getElementById(tableID).appendChild(footerRow);
+  document.getElementsByTagName('table')[0].appendChild(footerRow);
   var totalRow = document.createElement('td');
   totalRow.innerText = 'Totals: ';
   footerRow.appendChild(totalRow);
@@ -204,12 +200,13 @@ function renderAllSales(title) {
   renderSalesData();
   createFooterRow();
 }
-//
+
 // function renderAllStaffing(title) {
 //   createTableTitle(title);
 //   createTable();
 //   createHeaderRow();
-//   renderStaffingData();
+//   addLocationTotals();
+//   renderStaffingsData();
 //   createFooterRow();
 // }
 
@@ -222,4 +219,4 @@ new Location('Alki', 2, 16, 4.6);
 // listAllSales();
 
 renderAllSales('Cookies Needed By Location Per Day');
-// renderAllSales('Staffing Needed By Hour');
+// renderAllStaffing('Staff Needed By Location Per Hour');
